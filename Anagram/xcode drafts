@@ -1,0 +1,14 @@
+    checkArray.forEach(function(letter) {
+      alert(letter);
+      var partial = testValue.contains(letter); //contains does not work.
+      alert(partial);
+      });
+    
+
+      else if ((userInput) && (checkString !== testString)) {
+      $("#answer" + blank).append("Not a match. This is not an anagram for " + testValue + ".");
+    }
+     };
+
+     "This is a partial match for " + testValue + ", meaning that this word/phrase and " + testValue + " share one or more letters in common."
+

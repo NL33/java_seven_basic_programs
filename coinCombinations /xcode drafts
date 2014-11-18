@@ -1,0 +1,71 @@
+$(document).ready(function() {
+  $("#conversion").submit(function(event) {  
+   var amount = $('input#amount').val();
+
+if (amount) {
+  $("#calculateintro").show();
+
+//Quarters
+var a = (amount/25).toString();
+var b = a.indexOf(".");
+if (b >= 1) {
+var c = parseInt(a.substring(0, b).toString());}
+if (b < 1) {
+  var c = 0
+}
+
+//dimes
+var d = (amount - (25 * c))
+
+var e = (d/10).toString();
+var f = (e).indexOf(".");
+
+if (f >= 1) {
+var g = parseInt(e.substring(0, f).toString());}
+if (f < 1) {
+  var g = 0
+}
+
+var h = (amount - ((25 * parseInt(c)) - (10 * parseInt(g))));
+
+var i = (h/5).toString();
+var j = (i).indexOf(".");
+
+if (j >= 1) {
+  var k = parseInt(i.substring(0, j).toString());
+}
+if (j < 1) {
+  var k = 0
+}
+
+var l = (amount - ((25 * parseInt(c)) - (10 * parseInt(g)) - (5 * parseInt(k))));
+
+if (amount >= 25) {
+    $("#anyquarters").show();
+    $("#quartersanswer").append(c);
+}
+
+if (d >= 10) {
+    $("#anydimes").show();
+    $("#dimesanswer").append(g);
+  }
+
+if (h >= 5) { 
+    $("#anynickels").show();
+    $("#nickelsanswer").append(k); 
+  }
+
+if (l > 0) {
+        $("#anypennies").show();
+        $("#penniessanswer").append(l);
+       }
+
+//total:
+ var z = (parseInt(c) + parseInt(g) + parseInt(k) + parseInt(l));
+
+$("#totalnumber").show();
+$("#total").append(z);
+}
+ event.preventDefault();   //required for any submit function
+ });   
+});

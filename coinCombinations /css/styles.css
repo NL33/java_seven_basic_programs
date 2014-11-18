@@ -1,0 +1,33 @@
+#calculateintro, #anyquarters1, #anyquarters2, #anydimes, #anynickels, #anypennies, #totalnumber {
+  display: none;
+}
+
+input {
+	width: 30%;
+	height: 30px;
+	font-size: 15px;
+}
+
+button {
+	background-color: #A3FFA3;
+	font-style: bold;
+	width: 20%;
+	height: 30px;
+	color: black!;
+	text-align: left;
+	border-color: black;
+	border-top-width: 3px;
+    border-right-width: 3px;
+    border-left-width: 3px;
+    border-bottom-width: 3px;
+}
+
+.btn-success {
+background-color: #85D6FF;
+color: black;
+border-color: blue;
+font-weight: bold;
+font-family: sans-serif;
+font-size: 16px;
+}
+

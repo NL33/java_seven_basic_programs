@@ -1,0 +1,92 @@
+$(document).ready(function() {
+	$("#conversion").submit(function(event) {  
+   var amount = $('input#amount').val();
+   //example:--amount is 68
+    ///  example: 1064
+   //quarters:
+   var a = (amount / 25).toString(); // 2.72 ///42.56
+   var q = (amount / 10).toString();
+   var r = (amount / 5).toString();
+
+   var b = a.indexOf("."); // 1 ///2
+   var c = parseInt(a.substring(0, b).toString()); //2 Quarters ///42 Quarters (parseInt to round to whole numbers)
+ 
+ //dimes: //1
+   //if (10 <= amount < 25) {
+   // var f = (amount / 10).toString(); 
+   //}
+   //else {
+   var d = a.substring(b).toString(); //.72  ///.56
+   var e = (d * 25).toString(); // 18  ///14
+
+   var f = (e / 10).toString(); // 1.8   ///1.4
+ //}
+   var g = f.indexOf("."); // 1 ///1
+   var h = parseInt(f.substring(0, g).toString()); // 1  ///1
+
+//nickels: //1
+   var i = f.substring(g).toString(); //.8  ///.4
+   var j = (i * 10).toString(); //8  ///4
+
+   var k = (j / 5).toString(); //1.6   ///.75
+   var l = k.indexOf("."); //1   ///0
+   var m = parseInt(k.substring(0, l).toString()); //1  ///0
+
+//pennies: //3
+   var n = k.substring(l).toString(); //.6  ///.75
+   var o = parseInt((n * 5).toString()); // 3  ///4
+
+//total:
+ var z = parseInt(c) + parseInt(h) + parseInt(m) + parseInt(o);
+
+if (amount) {
+  $("#calculateintro").show();
+
+    if ((amount % 25) === 0) {
+      $("#anyquarters").show();
+      $("#quartersanswer").append(a); 
+    } 
+
+      else {
+        if (amount >= 25) {
+          $("#anyquarters").show();
+          $("#quartersanswer").append(c);
+        }
+
+        if ((amount % 10) === 0) {
+          $("#anydimes").show();
+          $("#dimesanswer").append(q); 
+        } 
+           
+           else {
+            if ((amount >= 10) && (h > 0)){
+              $("#anydimes").show();
+              $("#dimesanswer").append(h);
+            }
+
+            if ((amount % 5) === 0) {
+              $("#anynickels").show();
+              $("#nickelsanswer").append(r); 
+            } 
+
+              else {
+
+                if ((amount >= 5) && (m > 0)){
+                  $("#anynickels").show();
+                  $("#nickelsanswer").append(m);
+                }
+
+                if (amount >= 1) {
+                  $("#anypennies").show();
+                  $("#penniesanswer").append(o);
+                }
+               } 
+             }   
+      }
+
+$("#totalnumber").show();
+$("#total").append(z);
+}
+ event.preventDefault();   //required for any submit function
+ });   
+});
